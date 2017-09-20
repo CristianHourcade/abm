@@ -10,7 +10,7 @@ private $conn;
  
 public function __construct(){ 
 //Constructor
-include "../abm/includes/config-bd.php";
+include "includes/config-bd.php";
 
 $this->host=HOST;
 $this->user=USER;
@@ -33,10 +33,29 @@ public function CloseConnection(){
 public function ExecuteQuery($sql){
 
  $result = $this->conn->query($sql);
-
+ return $result;
 
 }
-  
+
+public function Selecc($sql){
+	
+	$result = $this->conn->query($sql);
+
+	while($fila=mysqli_fetch_assoc($result)){
+				?>
+					<tr>
+						<td><input type="checkbox" class="tilde" value="<?php echo $fila["id"] ?>">
+						<td><?php echo $fila["nombre"]?></td>
+						<td><?php echo $fila["apellido"]?></td>
+						<td><?php echo $fila["dni"]?></td>
+						<td><?php echo $fila["sueldo"]?></td>
+					</tr>
+				<?php
+				}
+
+}
+
+
 }
 
 ?>

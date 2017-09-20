@@ -8,5 +8,4 @@
 
 			$NewEmpleado= new Empleado();
 			$NewEmpleado->Alta($nombre,$apellido,$dni,$sueldo);
-
-		
+?>
